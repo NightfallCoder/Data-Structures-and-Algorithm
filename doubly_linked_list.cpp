@@ -79,32 +79,44 @@ node* insertAtKthPos(node* head,int k,int n){
     tail->prev=before_Tail;
 
     return head;
-}
-node* insert_before(node* head,int val,int n){
-    node* current=new node(n);
-    node* previous=head;
-    while(previous->data!=val){
-        previous=previous->next;
-    }
-    current->next=previous;
-    current->prev=previous->prev;
+}node* insert_before(node* head, int element, int val) {
+    node* current = new node(val);
+    node* temp = head;
+    int count = 1;
 
-    previous->prev->next=current;
-    previous->prev=current;
+    // Find the node with data equal to element
+    while (count < element-1) {
+        temp = temp->next;
+        count++; // Increment the counter
+    }
+
+    // Insert before the found node
+    current->next = temp;
+    current->prev = temp->prev;
+
+    temp->prev->next = current;
+    temp->prev = current;
 
     return head;
 }
-node* insert_after(node* head,int val,int n){
-    node* current=new node(n);
-    node* previous=head;
-    while(previous->data!=val){
-        previous=previous->next;
-    }
-    current->prev=previous;
-    current->next=previous->next;
 
-    previous->next->prev=current;
-    previous->next=current;
+node* insert_after(node* head, int element, int val) {
+    node* current = new node(val);
+    node* temp = head;
+    int count = 1;
+
+    // Find the node with data equal to element
+    while (count < element) {
+        temp = temp->next;
+        count++; // Increment the counter
+    }
+
+    // Insert after the found node
+    current->prev = temp;
+    current->next = temp->next;
+
+    temp->next->prev = current;
+    temp->next = current;
 
     return head;
 }
@@ -141,7 +153,7 @@ int main(){
         cout<<"4 Insert before the given node\n";
         cout<<"5 Insert after the given node\n";
         cout<<"6 Insert before the end\n";
-        cout<<" Enter your choice 1/2/3/4: \n";
+        cout<<" Enter your choice 1/2/3/4/5/6: \n";
         cin >> choice;
 
         
@@ -176,6 +188,7 @@ int main(){
                 cout<<"Enter value";
                 cin>>val;
                 head=insert_before(head,element,val);
+                break;
                 
                 case '5':
                 cout<<"Enter the value after which the data has to be inserted: "<<endl;
@@ -183,11 +196,11 @@ int main(){
                 cout<<"Enter value";
                 cin>>val;
                 head=insert_after(head,element,val);
-                
+                break;
                 case '6':
 
                 default:
-                cout << "Invalid choice. Please enter 1, 2, or 3.\n";
+                cout << "Invalid choice. Please enter 1, 2,3,4,5 or 6.\n";
                 continue;
 
             }
