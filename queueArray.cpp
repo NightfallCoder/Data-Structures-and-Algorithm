@@ -44,7 +44,8 @@ public:
     }
 
     bool empty() {
-        return (front == -1 || front > back);
+        if(front == -1 || front > back)return true;
+        return false;
     }
 
     void display() {
