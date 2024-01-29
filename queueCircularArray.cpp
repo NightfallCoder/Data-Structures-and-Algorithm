@@ -20,41 +20,39 @@ void enqueue(int x){
         arr[rear]=x;
     }
     else if(((rear+1)%n)==front){
-        cout<<"Queue is full";
+        cout<<"Queue is full"<<endl;
     }
     else{
         rear=(rear+1)%n;
         arr[rear]=x;
     }
 }
-void dequeue(){
-    if(front==-1 && rear==-1){
-        cout<<"Queue is empty.";
+void dequeue() {
+    if (front == -1 && rear == -1) {
+        cout << "Queue is empty." << endl;
+    } else if (front == rear) {
+        cout << arr[front] << " dequeued." << endl;
+        front = rear = -1;
+    } else {
+        cout << arr[front] << " dequeued." << endl;
+        front = (front + 1) % n;
     }
-    else if(front==rear){
-        front=rear=-1;
-    }
-    else{
-    cout<<arr[front];
-    front=(front+1)%n;
-    
+}
 
-    }
-}
-void display(){
-    int i=front;
-    if(front==-1 && rear==-1){
-        cout<<"Queue is empty.";
-    }
-    else{
-        cout<<"Queue is: ";
-        while(i!=rear){
-            cout<<arr[i];
-            i=(i+1)%n;
+void display() {
+    if (front == -1 && rear == -1) {
+        cout << "Queue is empty." << endl;
+    } else {
+        cout << "Queue is: ";
+        int i = front;
+        while (i != rear) {
+            cout << arr[i] << " ";
+            i = (i + 1) % n;
         }
-        cout<<arr[rear];
+        cout << arr[rear] << endl;
     }
 }
+
 int peek(){
     if(front==-1 && rear==-1){
         cout<<"Queue is empty";
