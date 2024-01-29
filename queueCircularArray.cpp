@@ -97,7 +97,7 @@ int ch, num;
                 cout << "Peek: " << q.peek() << endl;
                 break;
            
-            case 6:
+            case 5:
                 cout << "Exit" << endl;
                 break;
             default:
