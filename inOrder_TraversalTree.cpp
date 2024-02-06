@@ -24,7 +24,7 @@ Tree* create() {
     char x;
    
 
-    cout << "Enter data (-1 for no node): " << endl;
+    cout << "Enter data (1 for no node): " << endl;
     cin >> x;
     Tree *newNode = new Tree(x);
     if (x == '1')
